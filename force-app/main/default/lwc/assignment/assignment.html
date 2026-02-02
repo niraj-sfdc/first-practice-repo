@@ -1,0 +1,65 @@
+<template>
+    <lightning-card title="Real-Time Account Record" icon-name="standard:account">
+        <div class="slds-p-around_medium">
+ 
+            <!-- VIEW MODE -->
+            <template if:false={editMode}>
+                <lightning-record-view-form
+                    record-id={recordId}
+                    object-api-name="Account">
+ 
+                    <div class="slds-box slds-theme_default">
+                        <lightning-output-field field-name="Name"></lightning-output-field>
+                        <lightning-output-field field-name="Industry"></lightning-output-field>
+                        <lightning-output-field field-name="Phone"></lightning-output-field>
+ 
+                        <!-- Optional: show Partner Region also -->
+                        <lightning-output-field field-name="Partner_Region__c"></lightning-output-field>
+                    </div>
+ 
+                    <div class="slds-m-top_medium">
+                        <lightning-button
+                            label="Edit"
+                            variant="brand"
+                            onclick={handleEdit}>
+                        </lightning-button>
+                    </div>
+                </lightning-record-view-form>
+            </template>
+ 
+            <!-- EDIT MODE -->
+            <template if:true={editMode}>
+                <lightning-record-edit-form
+                    record-id={recordId}
+                    object-api-name="Account"
+                    onsuccess={handleSuccess}
+                    onerror={handleError}>
+ 
+                    <lightning-messages></lightning-messages>
+ 
+                    <lightning-input-field field-name="Name"></lightning-input-field>
+                    <lightning-input-field field-name="Industry"></lightning-input-field>
+                    <lightning-input-field field-name="Phone"></lightning-input-field>
+ 
+                    <!-- REQUIRED FIELD -->
+                    <lightning-input-field field-name="Partner_Region__c"></lightning-input-field>
+ 
+                    <div class="slds-m-top_medium">
+                        <lightning-button
+                            label="Cancel"
+                            onclick={handleCancel}>
+                        </lightning-button>
+ 
+                        <lightning-button
+                            label="Save"
+                            type="submit"
+                            variant="brand"
+                            class="slds-m-left_small">
+                        </lightning-button>
+                    </div>
+                </lightning-record-edit-form>
+            </template>
+ 
+        </div>
+    </lightning-card>
+</template>

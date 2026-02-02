@@ -1,0 +1,33 @@
+<template>
+    <lightning-card title="Create Contact">
+
+        <!-- Contact Form -->
+        <lightning-record-form
+            object-api-name="Contact"
+            fields={fields}
+            onsuccess={handleSuccess}>
+        </lightning-record-form>
+
+        <!-- Show Case Button -->
+        <template if:true={caseCreated}>
+            <div class="slds-p-around_medium">
+                <lightning-button
+                    label="Show Case"
+                    variant="brand"
+                    onclick={handleShowCase}>
+                </lightning-button>
+            </div>
+        </template>
+
+        <!-- Case Display -->
+        <template if:true={showCase}>
+            <div class="slds-p-around_medium">
+                <p><b>Case Number:</b> {caseData.CaseNumber}</p>
+                <p><b>Subject:</b> {caseData.Subject}</p>
+                <p><b>Priority:</b> {caseData.Priority}</p>
+                <p><b>Description:</b> {caseData.Description}</p>
+            </div>
+        </template>
+
+    </lightning-card>
+</template>

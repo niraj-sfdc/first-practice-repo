@@ -1,0 +1,21 @@
+<template>
+    <lightning-card title="Predictive Maintenance">
+
+        <!-- Button -->
+        <div class="slds-m-around_medium">
+            <lightning-button 
+                label="Get Failure Risk from IoT"
+                variant="brand"
+                onclick={handleClick}>
+            </lightning-button>
+        </div>
+
+        <!-- Datatable -->
+        <lightning-datatable
+            key-field="Id"
+            data={assets}
+            columns={columns}>
+        </lightning-datatable>
+
+    </lightning-card>
+</template>
